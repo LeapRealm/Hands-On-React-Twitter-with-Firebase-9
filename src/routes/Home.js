@@ -3,9 +3,9 @@ import {
   getFirestore,
   collection,
   addDoc,
-  getDocs,
   orderBy,
   query,
+  onSnapshot,
 } from "firebase/firestore";
 
 const Home = ({ userObj }) => {
@@ -13,18 +13,16 @@ const Home = ({ userObj }) => {
   const [tweets, setTweets] = useState([]);
 
   const db = getFirestore();
-  const getTweets = async () => {
-    const q = query(collection(db, "tweets"), orderBy("createdAt"));
-    const dbTweets = await getDocs(q);
-
-    dbTweets.forEach((document) => {
-      const tweetObject = { ...document.data(), id: document.id };
-      setTweets((prev) => [tweetObject, ...prev]);
-    });
-  };
 
   useEffect(() => {
-    getTweets();
+    const q = query(collection(db, "tweets"), orderBy("createdAt", "desc"));
+    onSnapshot(q, (snapshot) => {
+      const newArray = snapshot.docs.map((document) => ({
+        id: document.id,
+        ...document.data(),
+      }));
+      setTweets(newArray);
+    });
   }, []);
 
   const onSubmit = async (event) => {
