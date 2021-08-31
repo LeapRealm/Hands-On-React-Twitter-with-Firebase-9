@@ -29,7 +29,7 @@ function App() {
       }
       setInit(true);
     });
-  }, []);
+  }, [auth]);
 
   return (
     <>
@@ -38,7 +38,6 @@ function App() {
       ) : (
         "initializing..."
       )}
-      <footer>&copy; {new Date().getFullYear()} Twitter</footer>
     </>
   );
 }
