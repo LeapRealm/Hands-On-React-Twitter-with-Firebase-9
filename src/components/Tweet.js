@@ -1,4 +1,5 @@
 import { getFirestore, doc, deleteDoc, updateDoc } from "firebase/firestore";
+import { getStorage, deleteObject, ref } from "firebase/storage";
 import { useState } from "react";
 
 const Tweet = ({ tweetObj, isOwner }) => {
@@ -6,14 +7,14 @@ const Tweet = ({ tweetObj, isOwner }) => {
   const [newTweet, setNewTweet] = useState(tweetObj.text);
 
   const db = getFirestore();
+  const storage = getStorage();
 
   const onDeleteClick = async () => {
     const ok = window.confirm("삭제하시겠습니까?");
-    console.log(ok);
     if (ok) {
-      console.log(tweetObj.id);
-      const data = await deleteDoc(doc(db, `tweets/${tweetObj.id}`));
-      console.log(data);
+      await deleteDoc(doc(db, `tweets/${tweetObj.id}`));
+      if (tweetObj.attachmentUrl !== "")
+        await deleteObject(ref(storage, tweetObj.attachmentUrl));
     }
   };
 
@@ -45,6 +46,14 @@ const Tweet = ({ tweetObj, isOwner }) => {
       ) : (
         <>
           <h4>{tweetObj.text}</h4>
+          {tweetObj.attachmentUrl && (
+            <img
+              src={tweetObj.attachmentUrl}
+              alt="attachedtImg"
+              width="50px"
+              height="50px"
+            />
+          )}
           {isOwner && (
             <>
               <button onClick={onDeleteClick}>Delete Tweet</button>

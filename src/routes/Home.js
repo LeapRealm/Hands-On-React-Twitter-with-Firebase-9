@@ -7,7 +7,14 @@ import {
   query,
   onSnapshot,
 } from "firebase/firestore";
+import {
+  getStorage,
+  ref,
+  uploadString,
+  getDownloadURL,
+} from "firebase/storage";
 import Tweet from "components/Tweet";
+import { v4 as uuidv4 } from "uuid";
 
 const Home = ({ userObj }) => {
   const [tweet, setTweet] = useState("");
@@ -15,6 +22,8 @@ const Home = ({ userObj }) => {
   const [attachment, setAttachment] = useState("");
 
   const db = getFirestore();
+  const storage = getStorage();
+
   const fileInput = useRef();
 
   useEffect(() => {
@@ -30,12 +39,27 @@ const Home = ({ userObj }) => {
 
   const onSubmit = async (event) => {
     event.preventDefault();
+    let attachmentUrl = "";
+
+    if (attachment !== "") {
+      const attachmentRef = ref(storage, `${userObj.uid}/${uuidv4()}`);
+      const response = await uploadString(
+        attachmentRef,
+        attachment,
+        "data_url"
+      );
+      attachmentUrl = await getDownloadURL(response.ref);
+    }
+
     await addDoc(collection(db, "tweets"), {
       text: tweet,
       createdAt: Date.now(),
       creatorId: userObj.uid,
+      attachmentUrl,
     });
     setTweet("");
+    setAttachment("");
+    fileInput.current.value = "";
   };
 
   const onChange = (event) => {
