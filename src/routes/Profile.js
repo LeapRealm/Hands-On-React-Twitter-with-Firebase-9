@@ -36,6 +36,7 @@ const Profile = ({ userObj }) => {
     event.preventDefault();
     if (userObj.displayName !== newDisplayName && newDisplayName.length !== 0) {
       await updateProfile(userObj, { displayName: newDisplayName });
+      window.location.reload();
     }
   };
 
