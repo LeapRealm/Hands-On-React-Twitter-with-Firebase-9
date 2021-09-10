@@ -45,7 +45,6 @@ form {
 }
 
 .formInput {
-  width: 100%;
   padding: 10px 20px;
   border-radius: 20px;
   border: 1px solid black;
@@ -56,7 +55,6 @@ form {
 
 .formBtn {
   cursor: pointer;
-  width: 100%;
   padding: 7px 20px;
   text-align: center;
   color: white;
@@ -120,7 +118,6 @@ form {
   background-color: #04aaff;
   height: 40px;
   width: 40px;
-  padding: 10px 0px;
   text-align: center;
   border-radius: 20px;
   color: white;
@@ -241,7 +238,6 @@ form {
 
 .authInput {
   max-width: 320px;
-  width: 100%;
   padding: 10px;
   border-radius: 30px;
   background-color: rgba(255, 255, 255, 1);
