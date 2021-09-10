@@ -61,11 +61,6 @@ const TweetFactory = ({ userObj }) => {
       target: { files },
     } = event;
     const theFile = files[0];
-    if (theFile === undefined) {
-      fileInput.current.value = "";
-      setAttachment("");
-      return;
-    }
     const reader = new FileReader();
     reader.onloadend = (finishedEvent) => {
       const {
@@ -73,7 +68,9 @@ const TweetFactory = ({ userObj }) => {
       } = finishedEvent;
       setAttachment(result);
     };
-    reader.readAsDataURL(theFile);
+    if (Boolean(theFile)) {
+      reader.readAsDataURL(theFile);
+    }
   };
 
   const onClearAttachment = () => {
