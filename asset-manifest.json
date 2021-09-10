@@ -1,6 +1,6 @@
 {
   "files": {
-    "main.css": "/Hands-On-React-Twitter-with-Firebase-9/static/css/main.7dc7e62d.chunk.css",
+    "main.css": "/Hands-On-React-Twitter-with-Firebase-9/static/css/main.a36bda8f.chunk.css",
     "main.js": "/Hands-On-React-Twitter-with-Firebase-9/static/js/main.24ddf40f.chunk.js",
     "main.js.map": "/Hands-On-React-Twitter-with-Firebase-9/static/js/main.24ddf40f.chunk.js.map",
     "runtime-main.js": "/Hands-On-React-Twitter-with-Firebase-9/static/js/runtime-main.87877278.js",
@@ -8,13 +8,13 @@
     "static/js/2.9af45c07.chunk.js": "/Hands-On-React-Twitter-with-Firebase-9/static/js/2.9af45c07.chunk.js",
     "static/js/2.9af45c07.chunk.js.map": "/Hands-On-React-Twitter-with-Firebase-9/static/js/2.9af45c07.chunk.js.map",
     "index.html": "/Hands-On-React-Twitter-with-Firebase-9/index.html",
-    "static/css/main.7dc7e62d.chunk.css.map": "/Hands-On-React-Twitter-with-Firebase-9/static/css/main.7dc7e62d.chunk.css.map",
+    "static/css/main.a36bda8f.chunk.css.map": "/Hands-On-React-Twitter-with-Firebase-9/static/css/main.a36bda8f.chunk.css.map",
     "static/js/2.9af45c07.chunk.js.LICENSE.txt": "/Hands-On-React-Twitter-with-Firebase-9/static/js/2.9af45c07.chunk.js.LICENSE.txt"
   },
   "entrypoints": [
     "static/js/runtime-main.87877278.js",
     "static/js/2.9af45c07.chunk.js",
-    "static/css/main.7dc7e62d.chunk.css",
+    "static/css/main.a36bda8f.chunk.css",
     "static/js/main.24ddf40f.chunk.js"
   ]
 }
